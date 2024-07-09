@@ -1,6 +1,6 @@
 # ALURA
 
-Formação: APIs com Node.js e Express
+Formação: APIs com Node.js e Express  
 Descrição: Aprenda a criar aplicações em JavaScript com Node.js utilizando um dos frameworks mais usados do momento.
 
 Cursos [Concluído]
