@@ -1,6 +1,7 @@
 import express from 'express';
 import conectaDB from './config/dbConnect.js';
-import livro from './models/Livros.js';
+// import livro from './models/Livros.js';
+import routes from './routes/index.js';
 
 const conexao = await conectaDB();
 
@@ -14,7 +15,8 @@ console.log("Conexão com DB sucedida!!");
 
 
 const app = express();
-app.use(express.json());
+// app.use(express.json());
+routes(app);
 
 // const capitulos = [
 //     {
@@ -34,33 +36,33 @@ app.use(express.json());
 //     });
 // };
 
-app.get('/', (req, res) => {
-    res.status(200).send('Hello World with Express');
+// app.get('/', (req, res) => {
+//     res.status(200).send('Hello World with Express');
 
-});
+// });
 
-app.get('/acervojuscosmic', async (req, res) => {
-    const listaJusCosmic = await livro.find({});
-    console.log(`Teste do Livro.find({}) --> `);
-    console.log(listaJusCosmic);
-    res.status(200).json(listaJusCosmic);
-});
+// app.get('/acervojuscosmic', async (req, res) => {
+//     const listaJusCosmic = await livro.find({});
+//     console.log(`Teste do Livro.find({}) --> `);
+//     console.log(listaJusCosmic);
+//     res.status(200).json(listaJusCosmic);
+// });
 
-app.get('/capitulos/:id', (req, res) => {
-    const index = encontrarCapitulo(req.params.id);
-    res.status(200).json(capitulos[index]);
-})
+// app.get('/capitulos/:id', (req, res) => {
+//     const index = encontrarCapitulo(req.params.id);
+//     res.status(200).json(capitulos[index]);
+// })
 
-app.post('/capitulos', (req, res) => {
-    capitulos.push(req.body);
-    res.status(201).send('Capítulo adicionado com sucesso');
-});
+// app.post('/capitulos', (req, res) => {
+//     capitulos.push(req.body);
+//     res.status(201).send('Capítulo adicionado com sucesso');
+// });
 
-app.put('/capitulos/:id', (req, res) => {
-    const index = encontrarCapitulo(req.params.id);
-    capitulos[index].titulo = req.body.titulo;
-    res.status(200).json(capitulos);
-});
+// app.put('/capitulos/:id', (req, res) => {
+//     const index = encontrarCapitulo(req.params.id);
+//     capitulos[index].titulo = req.body.titulo;
+//     res.status(200).json(capitulos);
+// });
 
 app.delete('/capitulos/:id', (req, res) => {
         const index = encontrarCapitulo(req.params.id);
